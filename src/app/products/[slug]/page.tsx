@@ -287,7 +287,6 @@ export default function ProductDetailPage() {
                   return bScore - aScore;
                 })
                 .slice(0, 4)
-                .slice(0, 4)
                 .map((p) => (
                   <Link key={p.id} href={`/products/${p.slug}`}>
                     <div className="group bg-white rounded-2xl border border-gray-100/50 p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
