@@ -133,7 +133,7 @@ export const products: Product[] = [
     badge: "Popular",
     verified: true,
     category: "furniture",
-    tags: ["sofa", "seating", "living-room", "scandinavian", "furniture"],
+    tags: ["sofa", "seating", "living-room", "scandinavian"],
     description: "Elegant 3-piece Scandinavian sofa set with premium fabric upholstery.",
   },
   {

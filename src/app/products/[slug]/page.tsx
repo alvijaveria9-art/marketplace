@@ -277,36 +277,33 @@ export default function ProductDetailPage() {
         <div className="mt-16">
           <h2 className="text-2xl font-bold text-secondary mb-6">{t("product.related")}</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {products
-              .filter((p) => {
-                if (p.id === product.id) return false;
-                if (p.category !== product.category) return false;
-                if (product.tags && p.tags) {
-                  return p.tags.some((t) => product.tags?.includes(t));
-                }
-                return true;
-              })
-              .sort((a, b) => {
-                const aScore = a.tags && product.tags ? a.tags.filter((t) => product.tags?.includes(t)).length : 0;
-                const bScore = b.tags && product.tags ? b.tags.filter((t) => product.tags?.includes(t)).length : 0;
-                return bScore - aScore;
-              })
-              .slice(0, 4)
-              .map((p) => (
-                <Link key={p.id} href={`/products/${p.slug}`}>
-                  <div className="group bg-white rounded-2xl border border-gray-100/50 p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                    <div className="aspect-square bg-gray-50 rounded-xl mb-3 overflow-hidden relative">
-                      <ProductImageCarousel
-                        images={p.images || [p.image]}
-                        alt={p.name}
-                        className="w-full h-full object-contain p-4"
-                      />
+            {(() => {
+              const currentTags = product.tags;
+              return products
+                .filter((p) => p.id !== product.id && p.category === product.category)
+                .sort((a, b) => {
+                  const aScore = currentTags && a.tags ? a.tags.filter((t) => currentTags.includes(t)).length : 0;
+                  const bScore = currentTags && b.tags ? b.tags.filter((t) => currentTags.includes(t)).length : 0;
+                  return bScore - aScore;
+                })
+                .slice(0, 4)
+                .slice(0, 4)
+                .map((p) => (
+                  <Link key={p.id} href={`/products/${p.slug}`}>
+                    <div className="group bg-white rounded-2xl border border-gray-100/50 p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                      <div className="aspect-square bg-gray-50 rounded-xl mb-3 overflow-hidden relative">
+                        <ProductImageCarousel
+                          images={p.images || [p.image]}
+                          alt={p.name}
+                          className="w-full h-full object-contain p-4"
+                        />
+                      </div>
+                      <h3 className="text-sm font-semibold text-secondary line-clamp-1">{p.name}</h3>
+                      <p className="text-sm font-bold text-primary mt-1">{p.priceRange}</p>
                     </div>
-                    <h3 className="text-sm font-semibold text-secondary line-clamp-1">{p.name}</h3>
-                    <p className="text-sm font-bold text-primary mt-1">{p.priceRange}</p>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                ));
+            })()}
           </div>
         </div>
       </div>
