@@ -167,6 +167,6 @@ export const categories: Category[] = [
     icon: "Armchair",
     productCount: "4",
     color: "#D97706",
-    image: "https://ae-pic-a1.aliexpress-media.com/kf/S48ba917654694e23a94c7bbbd8cdaf0e3.jpg_480x480q75.jpg_.avif",
+    image: "https://s.alicdn.com/@sc04/kf/H19a98f88b4b841d0bdcfa18153e7988dA.jpg_720x720q50.jpg",
   },
 ];
