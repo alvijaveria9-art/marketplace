@@ -280,7 +280,7 @@ export default function ProductDetailPage() {
             {(() => {
               const currentTags = product.tags;
               return products
-                .filter((p) => p.id !== product.id && p.category === product.category)
+                .filter((p) => p.id !== product.id && p.tags?.some((t) => currentTags?.includes(t)))
                 .sort((a, b) => {
                   const aScore = currentTags && a.tags ? a.tags.filter((t) => currentTags.includes(t)).length : 0;
                   const bScore = currentTags && b.tags ? b.tags.filter((t) => currentTags.includes(t)).length : 0;
