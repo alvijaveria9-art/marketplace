@@ -161,4 +161,12 @@ export const categories: Category[] = [
     color: "#64748B",
     image: "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=200&h=200&fit=crop",
   },
+  {
+    id: "sofa",
+    name: "Sofas & Armchairs",
+    icon: "Armchair",
+    productCount: "4",
+    color: "#D97706",
+    image: "https://ae-pic-a1.aliexpress-media.com/kf/S48ba917654694e23a94c7bbbd8cdaf0e3.jpg_480x480q75.jpg_.avif",
+  },
 ];
